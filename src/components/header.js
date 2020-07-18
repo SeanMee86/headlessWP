@@ -1,42 +1,26 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import { Link } from "gatsby";
+import Navigation from "./navigation";
+import './headerStyles.scss';
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+
+const Header = () => (
+    <header className="banner">
+        <div className="container">
+            <div className="header-wrap">
+                <div className="logo-wrap">
+                    <Link className="brand" to="/">Verdi Oncology logo</Link>
+                </div>
+                <div className="header-right">
+                    Call <a className="invoca" href="tel:214-739-1706">214-739-1706</a>
+                    <Link to="/contact-us">
+                        <button className="header-btn">Book Online</button>
+                    </Link>
+                </div>
+            </div>
+        </div>
+        <Navigation/>
+    </header>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header
