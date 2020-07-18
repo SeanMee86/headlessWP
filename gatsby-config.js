@@ -10,6 +10,21 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     {
+      resolve: `gatsby-plugin-catch-links`,
+      options: {
+        excludePattern: /(excluded-link|external)/,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        custom: {
+          families: ["Avenir"],
+          urls: ["fonts/fonts.css"],
+        },
+      },
+    },
+    {
       resolve: 'gatsby-source-gravityforms',
       options: {
         // Base URL needs to include protocol (http/https)

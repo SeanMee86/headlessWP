@@ -1,0 +1,19 @@
+nav.navbar.navbar-expand-lg.navbar-light {
+  #basic-navbar-nav {
+    .navbar-nav {
+      .dropdown.nav-item {
+        #basic-nav-dropdown {
+          color: #585858;
+        }
+      }
+
+      a {
+        color: #585858;
+      }
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    padding: 0;
+  }
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 import GravityFormForm from 'gatsby-gravityforms-component'
-import { AllGravityData } from "../hooks/gravityforms";
+import { AllGravityData } from "../../hooks/gravityforms";
+import './gravityFormStyles.scss';
 
 function handleError({values, error, reset}){
     console.log(error);
