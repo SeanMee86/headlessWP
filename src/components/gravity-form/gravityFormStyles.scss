@@ -1,15 +1,21 @@
 /** Gravity Forms */
 @import "node_modules/bootstrap/scss/bootstrap";
 .gform_wrapper form {
-  margin-bottom: 0;
+  max-width: 450px;
+  margin: 0 auto;
 }
 
 .gform_wrapper ul {
   @extend .list-unstyled;
+  margin-left: 0;
 }
 
 .gform_wrapper li {
   @extend .form-group;
+
+  label {
+    display: none;
+  }
 }
 
 .gform_wrapper .gfield_required {
@@ -38,6 +44,21 @@
 .gform_wrapper .button {
   @extend .btn;
   @extend .btn-primary;
+
+  background-color: #ddbba9;
+  border-color: #ddbba9 #7f7f7f #7f7f7f #ddbba9;
+  border-width: 2px;
+  border-radius: 5px;
+  color: #242729;
+  font-size: 24px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  &:hover {
+    border-color: #ddbba9;
+    color: #ddbba9;
+    background-color: #fff;
+  }
 }
 
 .gform_wrapper .gfield_error {
@@ -59,4 +80,9 @@
 
 .validation_message {
   display: none;
+}
+
+.gform_footer {
+  display: flex;
+  justify-content: center;
 }

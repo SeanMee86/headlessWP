@@ -5,26 +5,30 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import GravityForm from "../components/gravity-form/gravity-form";
 import PageHeader from "../components/page-header/page-header";
+import { Container, Row, Col } from "react-bootstrap";
+import pageStyles from './pageStyles.module.scss';
+import contentParser from 'gatsby-wpgraphql-inline-images';
 
-const Page = ({data}) => {
-    data = data.wpcontent.page;
+const Page = ({data: {wpcontent: {page}}, pageContext: {pluginOptions: {wordPressUrl, uploadsUrl}}}) => {
+    const {content} = page;
     return (
-        <Layout title={ data.title }>
-            <SEO title={ data.seo.title } seoInfo={data.seo} />
-            <PageHeader pageTitle={data.title}/>
-            <div style={{
-                margin: `0 auto`,
-                maxWidth: 960,
-                padding: `0 1.0875rem 1.45rem`,
-                fontFamily: "Avenir, sans-serif"
-            }} dangerouslySetInnerHTML={{__html: data.content}}/>
-            <div style={{
-                margin: `0 auto`,
-                maxWidth: 960,
-                padding: `0 1.0875rem 1.45rem`,
-            }}>
-                <GravityForm/>
-            </div>
+        <Layout title={ page.title }>
+            <SEO title={ page.seo.title } seoInfo={page.seo} />
+            <PageHeader pageTitle={page.title}/>
+            <Container>
+                <Row>
+                    <Col lg={8} className={pageStyles.pageContent}>
+                        <div>{contentParser({ content }, {wordPressUrl, uploadsUrl})}</div>
+                    </Col>
+                    <Col lg={4} className={pageStyles.sidebar} >
+                        <p>To Request an Appointment</p>
+                        <p>Call 214-739-1706</p>
+                        <p>or</p>
+                        <p>Use Our Easy Online Contact Form</p>
+                        <GravityForm/>
+                    </Col>
+                </Row>
+            </Container>
         </Layout>
     )
 }
@@ -35,6 +39,7 @@ export const query = graphql`
     page(id: $id) {
       content
       title
+      uri
       seo {
           metaDesc
           metaKeywords
