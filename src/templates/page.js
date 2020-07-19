@@ -9,12 +9,27 @@ import { Container, Row, Col } from "react-bootstrap";
 import pageStyles from './pageStyles.module.scss';
 import contentParser from 'gatsby-wpgraphql-inline-images';
 
-const Page = ({data: {wpcontent: {page}}, pageContext: {pluginOptions: {wordPressUrl, uploadsUrl}}}) => {
-    const {content} = page;
-    return (
-        <Layout title={ page.title }>
-            <SEO title={ page.seo.title } seoInfo={page.seo} />
-            <PageHeader pageTitle={page.title}/>
+const Page = (
+    {
+      data: {
+          wpcontent: {
+              page: {
+                  seo,
+                  title,
+                  content
+              }
+          }
+      },
+      pageContext: {
+          pluginOptions: {
+              wordPressUrl,
+              uploadsUrl
+          }
+      }
+    }) => (
+        <Layout title={ title }>
+            <SEO title={ seo.title } seoInfo={ seo } />
+            <PageHeader pageTitle={ title }/>
             <Container>
                 <Row>
                     <Col lg={8} className={pageStyles.pageContent}>
@@ -30,8 +45,7 @@ const Page = ({data: {wpcontent: {page}}, pageContext: {pluginOptions: {wordPres
                 </Row>
             </Container>
         </Layout>
-    )
-}
+)
 
 export const query = graphql`
   query MyQuery($id: ID!) {

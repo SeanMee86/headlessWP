@@ -5,7 +5,6 @@
  */
 
 // You can delete this file if you're not using it
-const cheerio = require ('cheerio');
 
 exports.createPages = async function({actions, graphql}) {
     const pluginOptions = {
@@ -19,7 +18,6 @@ exports.createPages = async function({actions, graphql}) {
               nodes {
                 id
                 uri
-                content
               }  
             }
           }
@@ -27,30 +25,10 @@ exports.createPages = async function({actions, graphql}) {
     )
     data.wpcontent.pages.nodes.forEach(node => {
         const uri = node.uri;
-        const id = node.id;
             actions.createPage({
                 path: uri,
                 component: require.resolve(`./src/templates/page`),
-                context: node
+                context: {...node, pluginOptions}
             })
     })
-}
-
-exports.onCreateNode = async ({
-    node,
-    actions,
-    store,
-    cache,
-    createNodeId,
-    reporter
-}) => {
-    const {createNode, createPage, deletePage} = actions;
-    if (node.internal.type === 'SitePage') {
-        if (node.context && node.context.content) {
-            if (!node.context.modified) {
-               const $ = cheerio.load(node.context.content);
-               console.log($)
-            }
-        }
-    }
 }
