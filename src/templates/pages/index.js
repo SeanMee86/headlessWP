@@ -27,8 +27,8 @@ const Index = (
           }
       }
     }) => (
-        <Layout title={ title }>
-            <SEO title={ seo.title } seoInfo={ seo } />
+        <Layout>
+            <SEO seoInfo={ seo } />
             <PageHeader pageTitle={ title }/>
             <Container style={{paddingTop: "50px"}}>
                 <Row>
@@ -37,7 +37,7 @@ const Index = (
                     </Col>
                     <Col lg={4} className={pageStyles.sidebar} >
                         <p>To Request an Appointment</p>
-                        <p>Call 214-739-1706</p>
+                        <p>Call <a href={'tel:+1-214-739-1706'}>214-739-1706</a></p>
                         <p>or</p>
                         <p>Use Our Easy Online Contact Form</p>
                         <GravityForm/>
@@ -48,7 +48,7 @@ const Index = (
 )
 
 export const query = graphql`
-  query MyQuery($id: ID!) {
+  query GetPagesQuery($id: ID!) {
   wpcontent {
     page(id: $id) {
       content

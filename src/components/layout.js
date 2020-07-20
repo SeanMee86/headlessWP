@@ -12,9 +12,9 @@ import Header from "./header/header"
 import "./layout.css"
 import Footer from "./footer/footer";
 
-const Layout = ({ children, title }) => (
+const Layout = ({ children }) => (
     <>
-        <Header siteTitle={title} />
+        <Header/>
         <main>
             {children}
         </main>

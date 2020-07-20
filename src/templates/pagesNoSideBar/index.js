@@ -8,7 +8,7 @@ import {
     Row,
     Col
 } from "react-bootstrap";
-import pageStyles from './pageStyles.module.scss';
+import pageStyles from '../pages/pageStyles.module.scss';
 import contentParser from 'gatsby-wpgraphql-inline-images';
 
 const Index = (

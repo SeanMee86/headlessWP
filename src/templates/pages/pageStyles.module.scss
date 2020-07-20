@@ -7,6 +7,14 @@
     margin-bottom: 0;
     font-size: 22px;
   }
+
+  a {
+    color: #ddbba9;
+
+    &:hover {
+      color: #bd9269;
+    }
+  }
 }
 
 .pageContent {
@@ -19,5 +27,13 @@
   h5,
   h6 {
     clear: both;
+  }
+
+  a {
+    color: #ddbba9;
+
+    &:hover {
+      color: #bd9269;
+    }
   }
 }

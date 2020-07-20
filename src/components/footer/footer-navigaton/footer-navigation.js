@@ -3,10 +3,11 @@ import { Link } from "gatsby";
 import { GetMenuItems } from "../../../hooks/getMenuItems";
 
 const FooterNav = () => {
-    const footerNav = GetMenuItems().footerNav.map((navItem, i) => (
+    const footerNavLinks = GetMenuItems().footerNav;
+    const footerNav = footerNavLinks.map((navItem, i) => (
             [
                 <Link key={i} to={navItem.path}>{navItem.label}</Link>,
-                <span key={i+'after'}>|</span>
+                <span key={i+'after'}>{i !== footerNavLinks.length - 1 ? '|' : null}</span>
             ]
     ));
     return (
