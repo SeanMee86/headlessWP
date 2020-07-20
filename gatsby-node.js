@@ -18,6 +18,9 @@ exports.createPages = async function({actions, graphql}) {
               nodes {
                 id
                 uri
+                template {
+                    __typename
+                  }
               }  
             }
           }
@@ -25,10 +28,28 @@ exports.createPages = async function({actions, graphql}) {
     )
     data.wpcontent.pages.nodes.forEach(node => {
         const uri = node.uri;
-            actions.createPage({
-                path: uri,
-                component: require.resolve(`./src/templates/page`),
-                context: {...node, pluginOptions}
-            })
+        switch(node.template.__typename){
+            case 'WPGraphQL_CustomTemplateTemplate':
+                actions.createPage({
+                    path: uri,
+                    component: require.resolve(`./src/templates/pages`),
+                    context: {...node, pluginOptions}
+                })
+                break;
+            case 'WPGraphQL_NoSidebarTemplate':
+                actions.createPage({
+                    path: uri,
+                    component: require.resolve(`./src/templates/pagesNoSideBar`),
+                    context: {...node, pluginOptions}
+                })
+                break;
+            default:
+                actions.createPage({
+                    path: uri,
+                    component: require.resolve(`./src/templates/pages`),
+                    context: {...node, pluginOptions}
+                })
+        }
+
     })
 }

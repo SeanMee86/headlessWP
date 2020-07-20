@@ -21,9 +21,9 @@ const flatListToHierarchical = (
 };
 
 export const GetMenuItems = () => {
-    const { wpcontent } = useStaticQuery(graphql`
-        query MENU_ITEMS {
-          wpcontent {
+    const { primaryNav, footerNav } = useStaticQuery(graphql`
+        query footerMenuItemsAndPrimaryMenuItems {
+          primaryNav: wpcontent {
             menuItems(where: {location: PRIMARY_NAVIGATION}) {
               nodes {
                 id
@@ -33,7 +33,18 @@ export const GetMenuItems = () => {
               }
             }
           }
+          footerNav: wpcontent {
+            menuItems(where: {location: FOOTER_NAVIGATION}) {
+              nodes {
+                path
+                label
+              }
+            }
+          }
         }
     `)
-    return flatListToHierarchical(wpcontent.menuItems.nodes);
+    return {
+        primaryNav: flatListToHierarchical(primaryNav.menuItems.nodes),
+        footerNav: footerNav.menuItems.nodes
+    }
 }

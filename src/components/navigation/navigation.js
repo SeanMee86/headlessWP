@@ -5,15 +5,13 @@ import { GetMenuItems } from "../../hooks/getMenuItems";
 import navigationStyles from './navigation.module.scss';
 import './navigationStyles.scss';
 
-const Navigation = () => {
-    return (
-        <Navbar className={navigationStyles.navBar} expand={'lg'} sticky={'top'}>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <NavItems navItems={GetMenuItems()}/>
-            </Navbar.Collapse>
-        </Navbar>
-    )
-}
+const Navigation = () => (
+    <Navbar className={navigationStyles.navBar} expand={'lg'} sticky={'top'}>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+            <NavItems navItems={GetMenuItems().primaryNav}/>
+        </Navbar.Collapse>
+    </Navbar>
+)
 
 export default Navigation;
