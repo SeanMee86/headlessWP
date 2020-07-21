@@ -1,0 +1,5 @@
+[build]
+  Functions = "lambda"
+  Command = "npm run build:lambda && gatsby build"
+
+
