@@ -14,17 +14,29 @@ import section5Img from '../../src/images/shutterstock_1150248683.jpg';
 import section6Img from '../../src/images/Sharma-Dallas-768x768.jpg';
 import section7Img from '../../src/images/shutterstock_725747446.jpg';
 import GravityForm from "../components/gravity-form/gravity-form";
+import SEO from "../components/seo";
+import { GetHomePageMeta } from "../hooks/getHomePageMeta";
 
 const IndexPage = () => {
+    const {seo: {schema: {siteUrl, siteName}}, pages: {nodes}} = GetHomePageMeta();
+    const {seo, date} = nodes[0];
     return (
         <Layout>
+            <SEO
+                seoInfo={ seo }
+                siteUrl={ siteUrl }
+                siteName={ siteName }
+                date={ date }/>
             <Container fluid className={`${homePageStyles.section1} ${homePageStyles.genericSection}`}>
                 <Container>
                     <Row>
                         <Col lg={5} className={homePageStyles.text}>
                             <h1>Dedicated to you, focused on beating your cancer.</h1>
                             <p>The Verdi oncology team is 100% focused on beating your cancer. We are your dedicated advocate and “quarterback” for personalized and innovative cancer treatments—built on a long-standing tradition of respect and compassion every step of the way.</p>
-                            <Button variant={'primary'} className={homePageStyles.mainBtn} href="/contact-us">Request an Appointment</Button>
+                            <Button
+                                variant={'primary'}
+                                className={homePageStyles.mainBtn}
+                                href="/contact-us">Request an Appointment</Button>
                         </Col>
                     </Row>
                 </Container>
@@ -43,7 +55,10 @@ const IndexPage = () => {
                                 <li>Concierge medicine level access to your Verdi oncologist</li>
                                 <li>Financial counseling and copay assistance programs</li>
                             </ul>
-                            <p><Button variant={'primary'} className={homePageStyles.secondaryBtn} href="/personalized-care/about-us">Learn more about Verdi</Button></p>
+                            <p><Button
+                                variant={'primary'}
+                                className={homePageStyles.secondaryBtn}
+                                href="/personalized-care/about-us">Learn more about Verdi</Button></p>
                         </Col>
                         <Col lg={6} className={homePageStyles.verticalCenter}>
                             <Image src={section2Img} fluid/>
@@ -68,7 +83,10 @@ const IndexPage = () => {
                             <p>Personalized Care</p>
                             <h2>Get tailored care for the person, not just the disease.</h2>
                             <p>We provide value-based care, a patient-centered approach to improving quality and outcomes–not the quantity of cases being treated. That means going beyond the NCCN (National Comprehensive Cancer Network) basic guidelines in oncology. That means outsmarting your cancer and thinking outside of the traditional protocol with novel agents and therapeutic modalities appropriate for the individual.</p>
-                            <p><Button variant={'primary'} className={homePageStyles.mainBtn} href="/personalized-care">Discover Why Personalized Care Matters</Button></p>
+                            <p><Button
+                                variant={'primary'}
+                                className={homePageStyles.mainBtn}
+                                href="/personalized-care">Discover Why Personalized Care Matters</Button></p>
                         </Col>
                         <Col lg={6} className={homePageStyles.verticalCenter}>
                             <Image src={section3Img} fluid/>
@@ -86,7 +104,10 @@ const IndexPage = () => {
                             <p>Access to advanced treatment options</p>
                             <h2>Access to advanced technological options.</h2>
                             <p>In cases where the individual’s cancer leaves them without many conventional options, our oncology specialists have the academic and clinical expertise to explore every possible avenue, from targeted, novel therapies and immunotherapy to clinical trial opportunities—to put in place more effective, and often less toxic, treatment strategies.</p>
-                            <p><Button variant={'primary'} className={homePageStyles.secondaryBtn} href="/treatments">Learn More About Treatment Options</Button></p>
+                            <p><Button
+                                variant={'primary'}
+                                className={homePageStyles.secondaryBtn}
+                                href="/treatments">Learn More About Treatment Options</Button></p>
                         </Col>
                     </Row>
                 </Container>
@@ -98,7 +119,10 @@ const IndexPage = () => {
                             <p>Who we help</p>
                             <h2>Find new hope for more time and a higher quality of life.</h2>
                             <p>The Verdi Cancer & Research Center of Texas offers a wide range of comprehensive cancer services to non-pediatric patients with soft-tissue cancers, all supported by a network of surgeons, referring physicians, and other specialists. These network centers of excellence streamline costs while also providing unique access to a research base of progressive technologies and treatments.</p>
-                            <p><Button variant={'primary'} className={homePageStyles.mainBtn} href="/cancers">Can You Help with My Specific Cancer?</Button></p>
+                            <p><Button
+                                variant={'primary'}
+                                className={homePageStyles.mainBtn}
+                                href="/cancers">Can You Help with My Specific Cancer?</Button></p>
                         </Col>
                         <Col lg={6} className={homePageStyles.verticalCenter}>
                             <Image src={section5Img} fluid/>
@@ -118,7 +142,10 @@ const IndexPage = () => {
                             <p>Who we are</p>
                             <h2>Experienced, compassionate specialists committed to defeating your cancer.</h2>
                             <p>Our medical oncology doctors are well known in the community and have a long-standing reputation for innovative, targeted treatment and a heart as big as Texas. In fact, they are often referred to by physicians for their own families near and far, from the Dallas/Fort Worth surrounding communities as well as a large swath of rural East Texas.</p>
-                            <p><Button variant={'primary'} className={homePageStyles.secondaryBtn} href="/our-team">Meet Our Team</Button></p>
+                            <p><Button
+                                variant={'primary'}
+                                className={homePageStyles.secondaryBtn}
+                                href="/our-team">Meet Our Team</Button></p>
                         </Col>
                     </Row>
                 </Container>
@@ -130,7 +157,10 @@ const IndexPage = () => {
                             <p>Financial Assistance</p>
                             <h2>Helping reduce your costs with financial assistance.</h2>
                             <p>We work with our patients and their families to help reduce out-of-pocket costs by applying for financial assistance programs and to cancer foundations. We can also help facilitate financial assistance for deductibles, copays or temporary loss of insurance.</p>
-                            <p><Button variant={'primary'} className={homePageStyles.mainBtn} href="/financial">More About Financial Assistance</Button></p>
+                            <p><Button
+                                variant={'primary'}
+                                className={homePageStyles.mainBtn}
+                                href="/financial">More About Financial Assistance</Button></p>
                         </Col>
                         <Col lg={6} className={homePageStyles.verticalCenter}>
                             <Image src={section7Img} fluid/>
