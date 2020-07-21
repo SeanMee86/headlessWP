@@ -348,13 +348,15 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
-.alignleft {
-  float: left;
-  margin: 0 20px 20px 0;
-}
-.alignright {
-  float: right;
-  margin: 0 0 20px 20px;
+@media screen and (min-width: 544px){
+  .alignleft {
+    float: left;
+    margin: 0 20px 20px 0;
+  }
+  .alignright {
+    float: right;
+    margin: 0 0 20px 20px;
+  }
 }
 a {
   color: #ddbba9;

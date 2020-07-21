@@ -1,6 +1,6 @@
-@mixin buttonMain {
-  background-color: #ddbba9;
-  border-color: #ddbba9 #7f7f7f #7f7f7f #ddbba9;
+@mixin siteBtn($color) {
+  background-color: $color;
+  border-color: $color #7f7f7f #7f7f7f $color;
   border-width: 2px;
   border-radius: 5px;
   color: #242729;
@@ -9,8 +9,16 @@
   padding-right: 1rem;
 
   &:hover {
-    border-color: #ddbba9;
-    color: #ddbba9;
+    border-color: $color;
+    color: $color;
     background-color: #fff;
   }
+}
+
+@mixin buttonMain {
+  @include siteBtn(#ddbba9)
+}
+
+@mixin buttonSecondary {
+  @include siteBtn(#d1dca4)
 }

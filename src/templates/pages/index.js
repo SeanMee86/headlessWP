@@ -33,7 +33,10 @@ const Page = (
               uploadsUrl
           }
       }
-    }) => (
+    }) => {
+    const pageContent = contentParser({ content }, {wordPressUrl, uploadsUrl});
+    console.log(pageContent)
+    return (
         <Layout>
             <SEO
                 seoInfo={ seo }
@@ -44,7 +47,7 @@ const Page = (
             <Container style={{paddingTop: "50px"}}>
                 <Row>
                     <Col lg={8} className={pageStyles.pageContent}>
-                        <div>{contentParser({ content }, {wordPressUrl, uploadsUrl})}</div>
+                        <div>{pageContent}</div>
                     </Col>
                     <Col lg={4} className={pageStyles.sidebar} >
                         <p>To Request an Appointment</p>
@@ -56,7 +59,8 @@ const Page = (
                 </Row>
             </Container>
         </Layout>
-)
+    )
+}
 
 export const query = graphql`
   query GetPagesQuery($id: ID!) {
