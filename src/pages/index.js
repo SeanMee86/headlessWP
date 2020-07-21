@@ -134,7 +134,7 @@ const IndexPage = () => {
                 <Container className={homePageStyles.genericSection}>
                     <Row>
                         <Col lg={6} className={homePageStyles.verticalCenter} style={{textAlign: "center", fontSize: "18px"}}>
-                            <Image src={section6Img} fluid style={{maxWidth: "370px", display: "block", margin: "10px auto"}}/>
+                            <Image src={section6Img} fluid style={{width: "370px", display: "block", margin: "10px auto"}}/>
                             <p>“We want our patients to feel as if they were being taken care of by a family member.”</p>
                             <p>– Jivesh Sharma, M.D.</p>
                         </Col>
