@@ -1,6 +1,7 @@
 import React from 'react'
 import GravityFormForm from 'gatsby-gravityforms-component'
 import { AllGravityData } from "../../hooks/gravityforms";
+import { navigate } from 'gatsby';
 import './gravityFormStyles.scss';
 
 function handleError({values, error, reset}){
@@ -10,7 +11,7 @@ function handleError({values, error, reset}){
 
 function handleSuccess({values, reset, confirmations}){
     reset();
-    console.log(confirmations);
+    navigate('/contact-us/thank-you');
 }
 
 const GravityForm = () => (

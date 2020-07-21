@@ -35,7 +35,6 @@ const Page = (
       }
     }) => {
     const pageContent = contentParser({ content }, {wordPressUrl, uploadsUrl});
-    console.log(pageContent)
     return (
         <Layout>
             <SEO
