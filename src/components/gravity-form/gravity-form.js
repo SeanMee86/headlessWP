@@ -18,7 +18,7 @@ const GravityForm = () => (
     <GravityFormForm
         id={1}
         formData={AllGravityData()}
-        lambda={`https://relaxed-dijkstra-ed5f2d.netlify.app/.netlify/functions/newGfEntry`}
+        lambda={`https://verdi-onc.netlify.app/.netlify/functions/newGfEntry`}
         successCallback={handleSuccess}
         errorCallback={handleError}
     />
