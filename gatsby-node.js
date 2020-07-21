@@ -11,11 +11,22 @@ exports.createPages = async function({actions, graphql}) {
         wordPressUrl: `https://gqltst.wpengine.com/`,
         uploadsUrl: `https://gqltst.wpengine.com/wp-content/uploads/`,
     }
-    const { data } = await graphql(
+    const {
+        data: {
+            wpcontent: {
+                pages: {
+                    pageNodes
+                },
+                posts: {
+                    postNodes
+                }
+            }
+        }
+    } = await graphql(
         `query {
           wpcontent {
             pages(first: 20) {
-              nodes {
+              pageNodes: nodes {
                 id
                 uri
                 template {
@@ -23,10 +34,16 @@ exports.createPages = async function({actions, graphql}) {
                   }
               }  
             }
+            posts {
+              postNodes: nodes {
+                id
+                uri
+              }
+            }
           }
         }`
     )
-    data.wpcontent.pages.nodes.forEach(node => {
+    pageNodes.forEach(node => {
         const uri = node.uri;
         if (uri === '/') return;
         switch(node.template.__typename){
@@ -52,5 +69,13 @@ exports.createPages = async function({actions, graphql}) {
                 })
         }
 
+    })
+    postNodes.forEach(node => {
+        const uri = node.uri;
+        actions.createPage({
+            path: uri,
+            component: require.resolve(`./src/templates/posts`),
+            context: {...node, pluginOptions}
+        })
     })
 }
