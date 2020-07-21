@@ -11,7 +11,7 @@ import {
 import pageStyles from '../pages/pageStyles.module.scss';
 import contentParser from 'gatsby-wpgraphql-inline-images';
 
-const Index = (
+const PageNoSidebar = (
     {
       data: {
           wpcontent: {
@@ -72,4 +72,4 @@ export const query = graphql`
 }
 `
 
-export default Index
+export default PageNoSidebar;

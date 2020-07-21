@@ -9,14 +9,21 @@ import { Container, Row, Col } from "react-bootstrap";
 import pageStyles from './pageStyles.module.scss';
 import contentParser from 'gatsby-wpgraphql-inline-images';
 
-const Index = (
+const Page = (
     {
       data: {
           wpcontent: {
+              seo: {
+                  schema: {
+                      siteUrl,
+                      siteName
+                  }
+              },
               page: {
                   seo,
                   title,
-                  content
+                  content,
+                  date
               }
           }
       },
@@ -28,7 +35,11 @@ const Index = (
       }
     }) => (
         <Layout>
-            <SEO seoInfo={ seo } />
+            <SEO
+                seoInfo={ seo }
+                siteUrl={ siteUrl }
+                siteName={ siteName }
+                date={ date }/>
             <PageHeader pageTitle={ title }/>
             <Container style={{paddingTop: "50px"}}>
                 <Row>
@@ -50,10 +61,17 @@ const Index = (
 export const query = graphql`
   query GetPagesQuery($id: ID!) {
   wpcontent {
+    seo {
+      schema {
+        siteUrl
+        siteName
+      }
+    }
     page(id: $id) {
       content
       title
       uri
+      date
       seo {
           metaDesc
           metaKeywords
@@ -62,6 +80,10 @@ export const query = graphql`
           opengraphImage {
             altText
             sourceUrl
+            mediaDetails {
+                height
+                width
+            }
           }
           opengraphModifiedTime
           opengraphPublishedTime
@@ -77,4 +99,4 @@ export const query = graphql`
 }
 `
 
-export default Index
+export default Page

@@ -28,6 +28,7 @@ exports.createPages = async function({actions, graphql}) {
     )
     data.wpcontent.pages.nodes.forEach(node => {
         const uri = node.uri;
+        if (uri === '/') return;
         switch(node.template.__typename){
             case 'WPGraphQL_CustomTemplateTemplate':
                 actions.createPage({

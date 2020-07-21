@@ -1,3 +1,4 @@
+@import "./src/shared/mixins/buttons";
 .header-wrap {
   display: flex;
   justify-content: space-between;
@@ -29,20 +30,7 @@
     }
 
     .header-btn {
-      background-color: #ddbba9;
-      border-color: #ddbba9 #7f7f7f #7f7f7f #ddbba9;
-      border-width: 2px;
-      border-radius: 5px;
-      color: #242729;
-      font-size: 24px;
-      padding-left: 1rem;
-      padding-right: 1rem;
-
-      &:hover {
-        border-color: #ddbba9;
-        color: #ddbba9;
-        background-color: #fff;
-      }
+      @include buttonMain();
     }
 
     @media screen and (max-width: 450px) {

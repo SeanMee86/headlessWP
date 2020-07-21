@@ -9,7 +9,24 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 
-function SEO({ lang, meta, seoInfo }) {
+function SEO({
+               lang,
+               meta,
+               seoInfo,
+               siteUrl,
+               siteName,
+               date
+}) {
+  const openGraphImage = seoInfo.opengraphImage ? `
+                {
+                   "@type":"ImageObject",
+                   "@id":"${seoInfo.opengraphUrl}#primaryimage",
+                   "inLanguage":"en-US",
+                   "url":"${seoInfo.opengraphImage.sourceUrl}",
+                   "width":${seoInfo.opengraphImage.mediaDetails.width},
+                   "height":${seoInfo.opengraphImage.mediaDetails.height},
+                   "caption":"${seoInfo.opengraphImage.altText}"
+                },` : ``;
   return (
     <Helmet
       htmlAttributes={{
@@ -52,6 +69,54 @@ function SEO({ lang, meta, seoInfo }) {
         },
       ].concat(meta)}
     >
+      <script type={'application/json-ld'}>
+        {`
+          {
+             "@context":"https://schema.org",
+             "@graph":[
+                {
+                   "@type":"WebSite",
+                   "@id":"${siteUrl}/#website",
+                   "url":"${siteUrl}/",
+                   "name":"${siteName}",
+                   "description":"",
+                   "potentialAction":[
+                      {
+                         "@type":"SearchAction",
+                         "target":"${siteUrl}/?s={search_term_string}",
+                         "query-input":"required name=search_term_string"
+                      }
+                   ],
+                   "inLanguage":"${lang}"
+                },${openGraphImage}
+                {
+                   "@type":"WebPage",
+                   "@id":"${seoInfo.opengraphUrl}#webpage",
+                   "url":"${seoInfo.opengraphUrl}",
+                   "name":"${seoInfo.opengraphTitle}",
+                   "isPartOf":{
+                      "@id":"${siteUrl}/#website"
+                   },
+                   "primaryImageOfPage":{
+                      "@id":"${seoInfo.opengraphUrl}#primaryimage"
+                   },
+                   "datePublished":"${date}+00:00",
+                   "dateModified":"${seoInfo.opengraphModifiedTime}",
+                   "description":"${seoInfo.opengraphDescription}",
+                   "inLanguage":"en-US",
+                   "potentialAction":[
+                      {
+                         "@type":"ReadAction",
+                         "target":[
+                            "${seoInfo.opengraphUrl}"
+                         ]
+                      }
+                   ]
+                }
+             ]
+          }
+        `}
+      </script>
     </Helmet>
   )
 }

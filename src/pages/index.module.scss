@@ -1,0 +1,17 @@
+@import "./src/shared/mixins/buttons";
+.section1 {
+  background-size: cover;
+  background: url("../images/shutterstock_743540647.jpg") no-repeat top/cover;
+  padding: 50px 0;
+
+  .text {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    font-family: "Avenir", sans-serif;
+    color: #fff;
+    .mainBtn{
+      @include buttonMain()
+    }
+  }
+}
+
