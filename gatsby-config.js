@@ -10,7 +10,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     {
-      resolve: "gatsby-plugin-google-tagmanager",
+      resolve: "gatsby-plugin-google-tagmanager-delayed",
       options: {
         id: "GTM-TDSKB9Q",
 
