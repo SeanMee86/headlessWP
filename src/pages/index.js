@@ -19,11 +19,11 @@ const IndexPage = ({data}) => {
     const {seo, date} = nodes[0];
     return (
         <Layout>
-            {/*<SEO*/}
-            {/*    seoInfo={ seo }*/}
-            {/*    siteUrl={ siteUrl }*/}
-            {/*    siteName={ siteName }*/}
-            {/*    date={ date }/>*/}
+            <SEO
+                seoInfo={ seo }
+                siteUrl={ siteUrl }
+                siteName={ siteName }
+                date={ date }/>
             <BackgroundImage
                 fluid={data.section1.childImageSharp.fluid}
                 className={`${homePageStyles.section1} ${homePageStyles.genericSection}`}
