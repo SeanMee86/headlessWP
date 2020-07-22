@@ -8,6 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
+import {fontUrl} from '../../static/fonts/AvenirLTStd-Medium.otf'
 
 function SEO({
                lang,
@@ -69,6 +70,12 @@ function SEO({
         },
       ].concat(meta)}
     >
+      <link
+          rel={'preload'}
+          as={'font'}
+          href={fontUrl}
+          type={'font/woff2'}
+          crossOrigin={'anonymous'}/>
       <script type={'application/json-ld'}>
         {`
           {
