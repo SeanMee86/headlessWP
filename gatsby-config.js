@@ -9,17 +9,17 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
-    // {
-    //   resolve: "gatsby-plugin-google-tagmanager-delayed",
-    //   options: {
-    //     id: "GTM-TDSKB9Q",
-    //
-    //     // Include GTM in development.
-    //     //
-    //     // Defaults to false meaning GTM will only be loaded in production.
-    //     defaultDataLayer: { platform: "gatsby" }
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-google-tagmanager-delayed",
+      options: {
+        id: "GTM-TDSKB9Q",
+
+        // Include GTM in development.
+        //
+        // Defaults to false meaning GTM will only be loaded in production.
+        defaultDataLayer: { platform: "gatsby" }
+      },
+    },
     {
       resolve: `gatsby-plugin-catch-links`,
       options: {
