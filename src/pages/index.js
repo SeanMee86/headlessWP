@@ -4,20 +4,18 @@ import {
     Container,
     Row,
     Col,
-    Button, Image
+    Button,
+    Image
 } from "react-bootstrap";
+import Img from 'gatsby-image';
 import homePageStyles from './index.module.scss'
-import section2Img from '../../src/images/shutterstock_796803448.jpg';
-import section3Img from '../../src/images/shutterstock_110078714.jpg';
-import section4Img from '../../src/images/shutterstock_1461133610.jpg';
-import section5Img from '../../src/images/shutterstock_1150248683.jpg';
 import section6Img from '../../src/images/Sharma-Dallas-768x768.jpg';
-import section7Img from '../../src/images/shutterstock_725747446.jpg';
 import GravityForm from "../components/gravity-form/gravity-form";
 import SEO from "../components/seo";
 import { GetHomePageMeta } from "../hooks/getHomePageMeta";
+import {graphql} from "gatsby";
 
-const IndexPage = () => {
+const IndexPage = ({data}) => {
     const {seo: {schema: {siteUrl, siteName}}, pages: {nodes}} = GetHomePageMeta();
     const {seo, date} = nodes[0];
     return (
@@ -61,7 +59,7 @@ const IndexPage = () => {
                                 href="/personalized-care/about-us">Learn more about Verdi</Button></p>
                         </Col>
                         <Col lg={6} className={homePageStyles.verticalCenter}>
-                            <Image src={section2Img} fluid/>
+                            <Img fluid={data.section2.childImageSharp.fluid}/>
                         </Col>
                     </Row>
                 </Container>
@@ -89,7 +87,7 @@ const IndexPage = () => {
                                 href="/personalized-care">Discover Why Personalized Care Matters</Button></p>
                         </Col>
                         <Col lg={6} className={homePageStyles.verticalCenter}>
-                            <Image src={section3Img} fluid/>
+                            <Img fluid={data.section3.childImageSharp.fluid}/>
                         </Col>
                     </Row>
                 </Container>
@@ -98,7 +96,7 @@ const IndexPage = () => {
                 <Container className={homePageStyles.genericSection}>
                     <Row>
                         <Col lg={6} className={homePageStyles.verticalCenter}>
-                            <Image src={section4Img} fluid/>
+                            <Img fluid={data.section4.childImageSharp.fluid}/>
                         </Col>
                         <Col lg={6} className={homePageStyles.verticalCenter}>
                             <p>Access to advanced treatment options</p>
@@ -125,7 +123,7 @@ const IndexPage = () => {
                                 href="/cancers">Can You Help with My Specific Cancer?</Button></p>
                         </Col>
                         <Col lg={6} className={homePageStyles.verticalCenter}>
-                            <Image src={section5Img} fluid/>
+                            <Img fluid={data.section5.childImageSharp.fluid}/>
                         </Col>
                     </Row>
                 </Container>
@@ -163,7 +161,7 @@ const IndexPage = () => {
                                 href="/financial">More About Financial Assistance</Button></p>
                         </Col>
                         <Col lg={6} className={homePageStyles.verticalCenter}>
-                            <Image src={section7Img} fluid/>
+                            <Img fluid={data.section7.childImageSharp.fluid}/>
                         </Col>
                     </Row>
                 </Container>
@@ -181,5 +179,45 @@ const IndexPage = () => {
         </Layout>
     )
 }
+
+export const query = graphql`
+    query{
+        section2: file(relativePath: {eq: "shutterstock_796803448.jpg"}) {
+            childImageSharp{
+                fluid{
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
+        section3: file(relativePath: {eq: "shutterstock_110078714.jpg"}) {
+            childImageSharp{
+                fluid{
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
+        section4: file(relativePath: {eq: "shutterstock_1461133610.jpg"}) {
+            childImageSharp{
+                fluid{
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
+        section5: file(relativePath: {eq: "shutterstock_1150248683.jpg"}) {
+            childImageSharp{
+                fluid{
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
+        section7: file(relativePath: {eq: "shutterstock_725747446.jpg"}) {
+            childImageSharp{
+                fluid{
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
+    }
+`
 
 export default IndexPage
