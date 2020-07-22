@@ -9,7 +9,9 @@ import React from "react";
 
 export const onRenderBody = ({setHeadComponents}) => {
     setHeadComponents([
-        <script src="https://73f6c8313e3d44a2bdef7d6220d114fd.js.ubembed.com" async/>,
+        <link href="https://www.googletagmanager.com/gtag/js?id=GTM-TDSKB9Q" rel="preload" as="script"/>,
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />,
+        <script src="https://73f6c8313e3d44a2bdef7d6220d114fd.js.ubembed.com" async/>
     ])
 }
 
