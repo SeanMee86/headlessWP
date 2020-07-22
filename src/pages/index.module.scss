@@ -28,8 +28,6 @@
 }
 
 .section1 {
-  @include backgroundImage("../images/shutterstock_743540647.jpg", top);
-
   .text {
     padding: 20px;
     background: rgba(0, 0, 0, 0.5);

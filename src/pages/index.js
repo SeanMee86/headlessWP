@@ -4,12 +4,11 @@ import {
     Container,
     Row,
     Col,
-    Button,
-    Image
+    Button
 } from "react-bootstrap";
 import Img from 'gatsby-image';
+import BackgroundImage from "gatsby-background-image";
 import homePageStyles from './index.module.scss'
-import section6Img from '../../src/images/Sharma-Dallas-768x768.jpg';
 import GravityForm from "../components/gravity-form/gravity-form";
 import SEO from "../components/seo";
 import { GetHomePageMeta } from "../hooks/getHomePageMeta";
@@ -25,10 +24,15 @@ const IndexPage = ({data}) => {
                 siteUrl={ siteUrl }
                 siteName={ siteName }
                 date={ date }/>
-            <Container fluid className={`${homePageStyles.section1} ${homePageStyles.genericSection}`}>
+            <BackgroundImage
+                fluid={data.section1.childImageSharp.fluid}
+                className={`${homePageStyles.section1} ${homePageStyles.genericSection}`}
+                style={{
+                    backgroundPosition: "top"
+                }}>
                 <Container>
                     <Row>
-                        <Col lg={5} className={homePageStyles.text}>
+                        <Col lg={5} className={`${homePageStyles.text}`}>
                             <h1>Dedicated to you, focused on beating your cancer.</h1>
                             <p>The Verdi oncology team is 100% focused on beating your cancer. We are your dedicated advocate and “quarterback” for personalized and innovative cancer treatments—built on a long-standing tradition of respect and compassion every step of the way.</p>
                             <Button
@@ -38,7 +42,7 @@ const IndexPage = ({data}) => {
                         </Col>
                     </Row>
                 </Container>
-            </Container>
+            </BackgroundImage>
             <Container fluid>
                 <Container className={homePageStyles.genericSection}>
                     <Row>
@@ -131,8 +135,8 @@ const IndexPage = ({data}) => {
             <Container fluid>
                 <Container className={homePageStyles.genericSection}>
                     <Row>
-                        <Col lg={6} className={homePageStyles.verticalCenter} style={{textAlign: "center", fontSize: "18px"}}>
-                            <Image src={section6Img} fluid style={{width: "370px", display: "block", margin: "10px auto"}}/>
+                        <Col lg={6} className={homePageStyles.verticalCenter} style={{textAlign: "center", fontSize: "18px", alignItems: "center"}}>
+                            <Img fixed={data.section6.childImageSharp.fixed} style={{display: "block", marginBottom: "20px"}}/>
                             <p>“We want our patients to feel as if they were being taken care of by a family member.”</p>
                             <p>– Jivesh Sharma, M.D.</p>
                         </Col>
@@ -166,7 +170,9 @@ const IndexPage = ({data}) => {
                     </Row>
                 </Container>
             </Container>
-            <Container fluid className={`${homePageStyles.contactSection}`}>
+            <BackgroundImage
+                fluid={data.contactSection.childImageSharp.fluid}
+                className={`${homePageStyles.contactSection}`}>
                 <Container>
                     <Row>
                         <Col lg={{span: 6, offset: 3}} className={homePageStyles.formContainer}>
@@ -175,13 +181,20 @@ const IndexPage = ({data}) => {
                         </Col>
                     </Row>
                 </Container>
-            </Container>
+            </BackgroundImage>
         </Layout>
     )
 }
 
 export const query = graphql`
     query{
+        section1: file(relativePath: {eq: "shutterstock_743540647.jpg"}) {
+            childImageSharp{
+                fluid(quality: 90, maxWidth: 1920){
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
         section2: file(relativePath: {eq: "shutterstock_796803448.jpg"}) {
             childImageSharp{
                 fluid{
@@ -210,9 +223,23 @@ export const query = graphql`
                 }
             }
         }
+        section6: file(relativePath: {eq: "Sharma-Dallas-768x768.jpg"}) {
+            childImageSharp{
+                fixed(width: 320, height: 320){
+                    ...GatsbyImageSharpFixed
+                }
+            }
+        }
         section7: file(relativePath: {eq: "shutterstock_725747446.jpg"}) {
             childImageSharp{
                 fluid{
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
+        contactSection: file(relativePath: {eq: "shutterstock_1093653983.jpg"}) {
+            childImageSharp{
+                fluid(quality: 90, maxWidth: 1920){
                     ...GatsbyImageSharpFluid
                 }
             }
