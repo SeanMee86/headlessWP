@@ -12,7 +12,7 @@ import homePageStyles from './index.module.scss'
 import GravityForm from "../components/gravity-form/gravity-form";
 import SEO from "../components/seo";
 import { GetHomePageMeta } from "../hooks/getHomePageMeta";
-import {graphql} from "gatsby";
+import { graphql } from "gatsby";
 
 const IndexPage = ({data}) => {
     const {seo: {schema: {siteUrl, siteName}}, pages: {nodes}} = GetHomePageMeta();
@@ -190,7 +190,7 @@ export const query = graphql`
     query{
         section1: file(relativePath: {eq: "shutterstock_743540647.jpg"}) {
             childImageSharp{
-                fluid(quality: 90, maxWidth: 1920){
+                fluid(quality: 60, maxWidth: 1920){
                     ...GatsbyImageSharpFluid
                 }
             }
