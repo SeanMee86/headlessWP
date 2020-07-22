@@ -77,7 +77,7 @@ function SEO({
           type={'font/woff2'}
           crossOrigin={'anonymous'}/>
       {/*<link rel="dns-prefetch" href="https://www.googletagmanager.com/" />*/}
-      <script src="https://73f6c8313e3d44a2bdef7d6220d114fd.js.ubembed.com" async/>
+
       <script type={'application/json-ld'}>
         {`
           {
