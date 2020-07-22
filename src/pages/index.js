@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Layout from "../components/layout"
 import {
     Container,
@@ -15,6 +15,12 @@ import { GetHomePageMeta } from "../hooks/getHomePageMeta";
 import { graphql } from "gatsby";
 
 const IndexPage = ({data}) => {
+    useEffect(() => {
+        const url = 'https://73f6c8313e3d44a2bdef7d6220d114fd.js.ubembed.com';
+        const ubScript = document.createElement('script');
+        ubScript.src = url;
+        document.body.appendChild(ubScript);
+    }, [])
     const {seo: {schema: {siteUrl, siteName}}, pages: {nodes}} = GetHomePageMeta();
     const {seo, date} = nodes[0];
     return (
