@@ -76,7 +76,7 @@ function SEO({
       {/*    href={fontUrl}*/}
       {/*    type={'font/woff2'}*/}
       {/*    crossOrigin={'anonymous'}/>*/}
-      <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
+      {/*<link rel="dns-prefetch" href="https://www.googletagmanager.com/" />*/}
       <script type={'application/json-ld'}>
         {`
           {
