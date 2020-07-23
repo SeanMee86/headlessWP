@@ -13,6 +13,7 @@ import GravityForm from "../components/gravity-form/gravity-form";
 import SEO from "../components/seo";
 import { GetHomePageMeta } from "../hooks/getHomePageMeta";
 import { graphql } from "gatsby";
+import ModalPopUp from "../components/modal-pop-up";
 
 const IndexPage = ({data}) => {
     const {seo: {schema: {siteUrl, siteName}}, pages: {nodes}} = GetHomePageMeta();
@@ -24,6 +25,7 @@ const IndexPage = ({data}) => {
                 siteUrl={ siteUrl }
                 siteName={ siteName }
                 date={ date }/>
+                <ModalPopUp />
             <BackgroundImage
                 fluid={data.section1.childImageSharp.fluid}
                 className={`${homePageStyles.section1} ${homePageStyles.genericSection}`}
