@@ -48,6 +48,7 @@
   @extend .btn;
   @extend .btn-primary;
   @include buttonMain();
+  text-transform: uppercase;
 }
 
 .gform_wrapper .gfield_error,
