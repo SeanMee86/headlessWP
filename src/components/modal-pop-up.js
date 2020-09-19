@@ -11,7 +11,7 @@ const ModalPopUp = () => {
         setShow(true);
     }, [])
     return (
-        <Modal show={show} onHide={handleClose} centered style={{fontFamily: "Nunito, sans-serif"}}>
+        <Modal show={show} onHide={handleClose} centered style={{fontFamily: "Avenir, sans-serif"}}>
             <Modal.Header closeButton>
                 <Modal.Title>
                     Serving Our Community of New and Current Patients

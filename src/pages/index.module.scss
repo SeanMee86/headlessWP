@@ -2,7 +2,7 @@
 @import "./src/shared/mixins/background-image";
 .genericSection {
   padding: 5em 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Avenir", sans-serif;
 
   .verticalCenter {
     display: flex;
@@ -51,7 +51,7 @@
     h2 {
       text-align: center;
       color: #fff;
-      font-family: "Nunito", sans-serif;
+      font-family: "Avenir", sans-serif;
       margin-bottom: 20px;
     }
   }
