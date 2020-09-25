@@ -34,7 +34,7 @@ const IndexPage = ({data}) => {
                 }}>
                 <Container>
                     <Row>
-                        <Col lg={5} className={`${homePageStyles.text}`}>
+                        <Col lg={6} className={`${homePageStyles.text}`}>
                             <h1>Dedicated to you, focused on beating your cancer.</h1>
                             <p>The Verdi oncology team is 100% focused on beating your cancer. We are your dedicated advocate and “quarterback” for personalized and innovative cancer treatments—built on a long-standing tradition of respect and compassion every step of the way.</p>
                             <Button

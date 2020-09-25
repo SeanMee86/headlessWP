@@ -1,8 +1,8 @@
 @import "./src/shared/mixins/buttons";
 @import "./src/shared/mixins/background-image";
 .genericSection {
-  padding: 50px 0;
-  font-family: "Nunito", sans-serif;
+  padding: 5em 0;
+  font-family: "Avenir", sans-serif;
 
   .verticalCenter {
     display: flex;
@@ -28,8 +28,10 @@
 }
 
 .section1 {
+  padding: 81px 0;
+
   .text {
-    padding: 20px;
+    padding: 35px;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
   }
@@ -49,7 +51,7 @@
     h2 {
       text-align: center;
       color: #fff;
-      font-family: "Nunito", sans-serif;
+      font-family: "Avenir", sans-serif;
       margin-bottom: 20px;
     }
   }
